@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('payment');
+    return view('register-client');
 });
 
-
+Route::get('/bank-list','TransactionController@index');
 
