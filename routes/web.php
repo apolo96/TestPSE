@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('register-client');
 });
-Route::post('/client','Client\ClientController@register')->name('client.register');
+Route::post('/clients','Client\ClientController@register')->name('client.register');
 Route::get('/banks','BanksController@index')->name('bank.list');
-
+Route::post('/transactions','Transaction\TransactionController@create')->name('tran.create');
+Route::post('/transactions/information','Transaction\TransactionController@information')->name('tran.info');

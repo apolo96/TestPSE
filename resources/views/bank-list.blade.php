@@ -15,7 +15,7 @@
         @endif
         <div class="row">
             <div class="col-lg-6">
-                <form>
+                <form action="{{route('tran.create')}}" method="post">
                     {{csrf_field()}}
                     @if (session('clientId'))
                         <input type="hidden"
@@ -24,7 +24,7 @@
                     @endif
                     <div class="form-group">
                         <label for="">Lista de bancos</label>
-                        <select name="bankCode" class="form-control" required>
+                        <select name="bankCode" class="form-control">
                             @foreach($banks as $bank)
                                 <option value="{{$bank->bankCode}}">
                                     {{$bank->bankName}}
@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Interfaz del banco</label>
-                        <select name="bankInterface" class="form-control" required>
+                        <select name="bankInterface" class="form-control">
                             <option value="">Selecione un interfaz del banco</option>
                             <option value="0">PERSONAS</option>
                             <option value="1">EMPRESAS</option>

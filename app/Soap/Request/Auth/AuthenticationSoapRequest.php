@@ -6,7 +6,7 @@
  * Time: 08:12
  */
 
-namespace App\Soap\Request\BankList;
+namespace App\Soap\Request\Auth;
 
 
 class AuthenticationSoapRequest

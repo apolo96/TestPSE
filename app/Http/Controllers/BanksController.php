@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Soap\Request\BankList\AuthenticationSoapRequest;
-use App\Soap\Request\BankList\AuthSoapRequest;
+use App\Soap\Request\Auth\AuthenticationSoapRequest;
+use App\Soap\Request\Auth\AuthSoapRequest;
 use App\Proxy\SoapProxy;
 use App\Soap\Response\BankList\GetBankListSoapResponse;
 use Illuminate\Support\Facades\Cache;
