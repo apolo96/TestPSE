@@ -21,9 +21,9 @@ class AuthenticationSoapRequest
 
     public function __construct()
     {
-        $this->login = '6dd490faf9cb87a9862245da41170ff2';
+        $this->login = env('PLACETOPAY_LOGIN');
         $this->seed = date('c');
-        $this->tranKey = sha1($this->seed.'024h1IlD', false);;
+        $this->tranKey = sha1($this->seed.env('PLACETOPAY_KEY'), false);;
     }
 
     /**

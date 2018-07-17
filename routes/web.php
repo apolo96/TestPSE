@@ -14,6 +14,6 @@
 Route::get('/', function () {
     return view('register-client');
 });
-
-Route::get('/bank-list','TransactionController@index');
+Route::post('/client','Client\ClientController@register')->name('client.register');
+Route::get('/banks','BanksController@index')->name('bank.list');
 

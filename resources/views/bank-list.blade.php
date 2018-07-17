@@ -16,6 +16,12 @@
         <div class="row">
             <div class="col-lg-6">
                 <form>
+                    {{csrf_field()}}
+                    @if (session('clientId'))
+                        <input type="hidden"
+                               name="clientId"
+                               value="{{session('clientId')}}">
+                    @endif
                     <div class="form-group">
                         <label for="">Lista de bancos</label>
                         <select name="bankCode" class="form-control" required>

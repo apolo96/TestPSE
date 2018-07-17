@@ -8,7 +8,7 @@ use App\Proxy\SoapProxy;
 use App\Soap\Response\BankList\GetBankListSoapResponse;
 use Illuminate\Support\Facades\Cache;
 
-class TransactionController extends Controller
+class BanksController extends Controller
 {
     /**
      * @var soapProxy
@@ -45,6 +45,6 @@ class TransactionController extends Controller
             $banks = [];
             $message = "No se pudo obtener la lista de Entidades Financieras, por favor intente más tarde" ;
         }
-        return view('payment',compact('banks','message'));
+        return view('bank-list',compact('banks','message'));
     }
 }
