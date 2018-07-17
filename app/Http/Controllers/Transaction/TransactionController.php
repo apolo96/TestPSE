@@ -70,8 +70,27 @@ class TransactionController extends Controller
         if ($response->createTransactionResult->returnCode != 'SUCCESS')return back()->withInput();
 
         $this->transactionRepository->save($response->createTransactionResult);
+        session(['tranId'=>$response->createTransactionResult->transactionID]);
         return redirect($response->createTransactionResult->bankURL);
     }
 
-    
+    public function information()
+    {
+//        $transactionID = session('tranId');
+        $transactionID = 1460191536;
+        $params = [
+            new InformationSoapRequest(new AuthenticationSoapRequest(),$transactionID)
+        ];
+        $response = $this->soapProxy->soapProxy(
+            [InformationSoapRequest::class, InformationSoapResponse::class],
+            'getTransactionInformation',
+            $params
+        );
+        $transactionInformation = $response->getTransactionInformationResult;
+        $this->transactionRepository->saveInformation($transactionInformation);
+
+        return view('transaction-information',compact('transactionInformation'));
+    }
+
+
 }

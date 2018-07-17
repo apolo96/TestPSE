@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 use App\Transaction;
+use App\TransactionInformation;
 
 class TransactionRepository
 {
@@ -27,5 +28,24 @@ class TransactionRepository
         $newTransaction->response_reason_code = $transaction->responseReasonCode;
         $newTransaction->response_reason_text = $transaction->responseReasonText;
         $newTransaction->save();
+    }
+
+    public function saveInformation($TransactionInfo)
+    {
+        $newTranInfo = new TransactionInformation();
+        $newTranInfo->transaction_id= $TransactionInfo->transactionID;
+        $newTranInfo->session_id= $TransactionInfo->sessionID;
+        $newTranInfo->reference= $TransactionInfo->reference;
+        $newTranInfo->request_date= $TransactionInfo->requestDate;
+        $newTranInfo->bank_process_date= $TransactionInfo->bankProcessDate;
+        $newTranInfo->on_test= $TransactionInfo->onTest;
+        $newTranInfo->return_code= $TransactionInfo->returnCode;
+        $newTranInfo->trazability_code= $TransactionInfo->trazabilityCode;
+        $newTranInfo->transaction_cycle= $TransactionInfo->transactionCycle;
+        $newTranInfo->transaction_state= $TransactionInfo->transactionState;
+        $newTranInfo->response_code= $TransactionInfo->responseCode;
+        $newTranInfo->response_reason_code= $TransactionInfo->responseReasonCode;
+        $newTranInfo->response_reason_text= $TransactionInfo->responseReasonText;
+        $newTranInfo->save();
     }
 }

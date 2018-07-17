@@ -47,7 +47,7 @@ class PSETransactionSoapRequest
 
         $this->buyer = $payer;
         $this->shipping = $payer;
-        $this->returnURL = "http://placetopay.loc/transactions/information";
+        $this->returnURL = "http://placetopaytest.loc/transactions/information";
         $this->reference = "#345FFA";
         $this->description = "Test payment";
         $this->language = "ES";
