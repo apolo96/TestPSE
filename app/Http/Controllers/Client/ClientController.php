@@ -3,27 +3,26 @@
 namespace App\Http\Controllers\Client;
 
 use App\Client;
+use App\Http\Requests\ClientRequest;
+use App\Repositories\ClientRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ClientController extends Controller
 {
-    public function register(Request $request)
+    protected $clientRepository;
+
+    /**
+     * ClientController constructor.
+     */
+    public function __construct(ClientRepository $clientRepository)
     {
-        $client = new Client();
-        $client->document = $request->document;
-        $client->document_type = $request->documentType;
-        $client->first_name = $request->firstName;
-        $client->last_name = $request->lastName;
-        $client->company = $request->company;
-        $client->emailAddress = $request->emailAddress;
-        $client->address = $request->address;
-        $client->city = $request->city;
-        $client->province = $request->province;
-        $client->country = $request->country;
-        $client->phone = $request->phone;
-        $client->mobile = $request->mobile;
-        $client->save();
+        $this->clientRepository = $clientRepository;
+    }
+
+    public function register(ClientRequest $request)
+    {
+        $client = $this->clientRepository->save($request);
         return redirect('banks')->with('clientId',$client->id);
     }
 }

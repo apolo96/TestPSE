@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Client;
 use App\Soap\Request\Transaction\PersonSoapRequest;
+use Illuminate\Http\Request;
 
 /**
  * Created by PhpStorm.
@@ -13,9 +14,23 @@ use App\Soap\Request\Transaction\PersonSoapRequest;
  */
 class ClientRepository
 {
-    public function save($attributes)
+    public function save(Request $request)
     {
-
+        $client = new Client();
+        $client->document = $request->document;
+        $client->document_type = $request->documentType;
+        $client->first_name = $request->firstName;
+        $client->last_name = $request->lastName;
+        $client->company = $request->company;
+        $client->emailAddress = $request->emailAddress;
+        $client->address = $request->address;
+        $client->city = $request->city;
+        $client->province = $request->province;
+        $client->country = $request->country;
+        $client->phone = $request->phone;
+        $client->mobile = $request->mobile;
+        $client->save();
+        return $client;
     }
 
     public function get($id)

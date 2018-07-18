@@ -11,11 +11,11 @@
         <div class="row">
             <div class="col">
                 <h3>Estado de la transacción</h3>
-                <h4>{{$transactionInformation->transactionState}}</h4>
+                <h4><strong>{{$transactionInformation->transactionState}}</strong></h4>
                 <h3>Mensaje</h3>
-                <h4>{{$transactionInformation->responseReasonText}}</h4>
+                <h4><strong>{{$transactionInformation->responseReasonText}}</strong></h4>
                 <h3>Fecha</h3>
-                <h4>{{$transactionInformation->bankProcessDate}}</h4>
+                <h4><strong>{{$transactionInformation->bankProcessDate}}</strong></h4>
             </div>
         </div>
     </div>

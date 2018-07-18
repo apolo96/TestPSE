@@ -10,6 +10,15 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="{{route('client.register')}}" method="post">
                     {{csrf_field()}}
                     <div class="form-group">
@@ -17,7 +26,7 @@
                         <input type="text"
                                class="form-control"
                                name="document"
-                               value="1075297099">
+                               value="">
                     </div>
                     <div class="form-group">
                         <label for="">Tipo de documento</label>

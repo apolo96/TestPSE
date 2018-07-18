@@ -11,6 +11,8 @@ use App\Soap\Request\Transaction\PSETransactionSoapRequest;
 use App\Soap\Request\Transaction\TransactionSoapRequest;
 use App\Soap\Response\Transaction\InformationSoapResponse;
 use App\Soap\Response\Transaction\PSETransactionSoapResponse;
+use App\Transaction;
+use App\TransactionInformation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -46,7 +48,7 @@ class TransactionController extends Controller
         $userAgent = $request->header('User-Agent');
         $bankCode = $request->bankCode;
         $bankInterface = $request->bankInterface;
-        $payer = $this->clientRepository->convertToPerson(1);
+        $payer = $this->clientRepository->convertToPerson($request->clientId);
 
         $params = [
             new TransactionSoapRequest(
@@ -76,8 +78,8 @@ class TransactionController extends Controller
 
     public function information()
     {
-//        $transactionID = session('tranId');
-        $transactionID = 1460191536;
+        $transactionID = session('tranId');
+//        $transactionID = 1460191536;
         $params = [
             new InformationSoapRequest(new AuthenticationSoapRequest(),$transactionID)
         ];
@@ -92,5 +94,15 @@ class TransactionController extends Controller
         return view('transaction-information',compact('transactionInformation'));
     }
 
+    public function transactionList()
+    {
+        $transactions = Transaction::all();
+        return view('transaction-list',compact('transactions'));
+    }
 
+    public function infoTransactionList()
+    {
+        $payIntents = TransactionInformation::all();
+        return view('payment-intent',compact('payIntents'));
+    }
 }
