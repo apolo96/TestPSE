@@ -79,7 +79,6 @@ class TransactionController extends Controller
     public function information()
     {
         $transactionID = session('tranId');
-//        $transactionID = 1460191536;
         $params = [
             new InformationSoapRequest(new AuthenticationSoapRequest(),$transactionID)
         ];
